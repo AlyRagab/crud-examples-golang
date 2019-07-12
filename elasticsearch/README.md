@@ -11,7 +11,7 @@ $ docker run -- name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=
 ```
 $ curl -v http://localhost:9200
 ```
-- run the code :
+- Specify the "indexName" variable and Run the code :
 ```
 $ go get -u -v github.com/olivere/elastic
 & go run main.go
