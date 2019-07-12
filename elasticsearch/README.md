@@ -6,10 +6,10 @@
 $ docker run -- name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.2.0
 
 - To test it :
-$ curl -v http://localhost:9200
+$curl -v http://localhost:9200
 
 - run the code :
-$ go get -u -v github.com/olivere/elastic
+$go get -u -v github.com/olivere/elastic
 & go run main.go
 
 - To look for Created Index :
