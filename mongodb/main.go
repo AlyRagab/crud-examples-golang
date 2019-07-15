@@ -24,6 +24,8 @@ type Person struct {
 var ctx, _ = context.WithTimeout(context.Background(), 20*time.Second)
 var mongoClient *mongo.Client
 var err error
+var person Person
+var people []Person
 
 // Handling the Error function
 func check(err error) {
@@ -36,7 +38,7 @@ func check(err error) {
 func createUsers(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Add("content-type", "application/json")
-	var person Person
+
 	json.NewDecoder(r.Body).Decode(&person)
 	// Create the Database
 	db := mongoClient.Database("usersdb").Collection("people")
@@ -49,14 +51,12 @@ func createUsers(w http.ResponseWriter, r *http.Request) {
 
 // Delete The Users in the people Collection
 func deleteUsers(w http.ResponseWriter, r *http.Request) {
-	w.Header().Add("content-type", "application/json")
 
 }
 
 // Querying and Getting The users
 func getUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
-	var people []Person
 	db := mongoClient.Database("usersdb").Collection("people")
 	get, err := db.Find(ctx, bson.M{})
 	check(err)
